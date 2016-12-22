@@ -11,6 +11,5 @@
 |
 */
 
-Route::get('/', function () {
-    return view('front.index');
-});
+Route::get('/', 'FrontController@index')->name('index');
+Route::get('/article/{id}', 'FrontController@showPost')->name('article');

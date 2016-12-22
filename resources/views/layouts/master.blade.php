@@ -17,16 +17,16 @@
         @include('front.partials.header')
      
         <div id="main" role="main" class="container">
-            <div class="content col-md-9 col-lg-9 col-xs-12 col-sm-12">
+            <div class="content col-md-10 col-lg-10 col-xs-12 col-sm-12">
                 @yield('content')
             </div>
-            <div class="sidebar-front col-md-3 hidden-xs hidden-sm">
+            <div class="sidebar-front col-md-2 hidden-xs hidden-sm">
                 @section('sidebar')
                     @include('front.partials.sidebar')
                 @show
             </div>
         </div>
-
+        @include('front.partials.footer')
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
         <script type="text/javascript" src="{{url('assets/js/app.min.js')}}"></script>
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
