@@ -26,4 +26,29 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * posts relationship
+     *
+     * @return relation
+     */
+    public function posts()
+    {
+        return $this->hasMany('App\Post');
+    }
+
+    /**
+     * isAdmin check if a user has the role administrator
+     *
+     * @return boolean
+     */
+    public function isAdmin()
+    {
+        return ($this->role === 'teacher') ? true : false;
+    }
+
+    public function isStudent()
+    {
+        return in_array($this->role, ['final_class', 'first_class']) ;
+    }
 }

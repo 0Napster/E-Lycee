@@ -23,3 +23,6 @@ Route::get('admin', function () {
 
 Route::any('login', 'Auth\LoginController@login');
 Route::any('logout', 'Auth\LoginController@logout');
+
+Route::get('/', 'FrontController@index')->name('index');
+Route::get('/article/{id}', 'FrontController@showPost')->name('article');

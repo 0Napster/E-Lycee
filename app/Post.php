@@ -21,4 +21,14 @@ class Post extends Model
         'date',
         'status',
     ];
+
+    /**
+     * user relationship
+     *
+     * @return relation
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }
