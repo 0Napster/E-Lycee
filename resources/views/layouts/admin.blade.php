@@ -16,7 +16,6 @@
 	<body>
 		
 		@include('admin.partials.nav')
-	
 
 		<div id="wrapper" class="">
 			@include('admin.partials.sidebar')

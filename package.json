@@ -1,8 +1,8 @@
 {
   "name": "e-lycee",
   "version": "0.1.0",
-  "dependencies": {},
   "devDependencies": {
+    "bootstrap-sass": "^3.3.7",
     "browser-sync": "^2.11.1",
     "gulp": "^3.9.0",
     "gulp-autoprefixer": "^3.1.0",

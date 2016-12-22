@@ -14,3 +14,12 @@
 Route::get('/', function () {
     return view('front.index');
 });
+Route::get('home', function () {
+    return view('front.index');
+});
+Route::get('admin', function () {
+    return view('admin.index');
+})->middleware('auth');
+
+Route::any('login', 'Auth\LoginController@login');
+Route::any('logout', 'Auth\LoginController@logout');

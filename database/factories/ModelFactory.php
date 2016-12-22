@@ -69,12 +69,15 @@ $factory->define(\App\Score::class, function (Faker\Generator $faker) {
     $questionID = rand(1, 4);
     $statusTable = ['done', 'undone'];
     $rand2 = rand(0, 1);
-    $randNote = rand(0, 1);
+    if($rand2 != 1){
+        $randNote = rand(0, 1);
+    }else{
+        $randNote = 0;
+    }
 
     return [
         'user_id' => $userID,
         'question_id' => $questionID,
-        'content' => $faker->paragraph(),
         'status_question' => $statusTable[$rand2],
         'note' => $randNote
     ];

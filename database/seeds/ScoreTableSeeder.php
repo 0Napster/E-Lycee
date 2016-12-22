@@ -11,6 +11,13 @@ class ScoreTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        for ($i = 1; $i < 5; $i++) {
+            factory(\App\Score::class, 1)->create(['question_id' => $i, 'user_id' => '2']);
+            factory(\App\Score::class, 1)->create(['question_id' => $i, 'user_id' => '3']);
+            factory(\App\Score::class, 1)->create(['question_id' => $i, 'user_id' => '4']);
+            factory(\App\Score::class, 1)->create(['question_id' => $i, 'user_id' => '5']);
+            factory(\App\Score::class, 1)->create(['question_id' => $i, 'user_id' => '6']);
+            factory(\App\Score::class, 1)->create(['question_id' => $i, 'user_id' => '7']);
+        }
     }
 }

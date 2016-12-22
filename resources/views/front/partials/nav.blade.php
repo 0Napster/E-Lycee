@@ -14,7 +14,7 @@
                 <li class="active"><a href="{{url('/')}}">Home</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-
+                <li><a href="{{url('/login')}}"><button class='btn btn-primary btn-xs'><i class="fa fa-sign-in" aria-hidden="true"></i>  Se connecter</button></a></li>
             </ul>
         </div>
     </div>
