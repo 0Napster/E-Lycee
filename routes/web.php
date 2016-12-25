@@ -18,7 +18,7 @@ Route::get('home', function () {
     return view('front.index');
 });
 Route::get('admin', function () {
-    return view('admin.index');
+    return view('admin.dashboard');
 })->middleware('auth');
 
 Route::any('login', 'Auth\LoginController@login');

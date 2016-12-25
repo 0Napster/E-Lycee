@@ -31,4 +31,14 @@ class Post extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    /**
+     * score relationship
+     *
+     * @return relation
+     */
+    public function score()
+    {
+        return $this->hasMany('App\Score');
+    }
 }

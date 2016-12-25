@@ -18,7 +18,8 @@ var gulp        = require('gulp'),
 
 var path = {
     'resources': {
-        'sass': './resources/assets/sass',
+        'sassFront': './resources/assets/sass/front',
+        'sassBack': './resources/assets/sass/back',
         'js': './resources/assets/js',
         'images': './resources/assets/images'
     },
@@ -34,7 +35,7 @@ var path = {
 };
 
 
-gulp.task('scss', function() {
+gulp.task('scssFront', function() {
     var onError = function(err) {
         notify.onError({
             title:    "Gulp",
@@ -45,12 +46,37 @@ gulp.task('scss', function() {
         this.emit('end');
     };
 
-    return gulp.src(path.resources.sass + '/app.scss')
+    return gulp.src(path.resources.sassFront + '/app.scss')
         .pipe(plumber({errorHandler: onError}))
         .pipe(sass())
         .pipe(size({ gzip: true, showFiles: true }))
         .pipe(prefix())
-        .pipe(rename('app.css'))
+        .pipe(rename('app-front.css'))
+        .pipe(gulp.dest(path.public.css))
+        .pipe(reload({stream:true}))
+        .pipe(cssmin())
+        .pipe(size({ gzip: true, showFiles: true }))
+        .pipe(rename({ suffix: '.min' }))
+        .pipe(gulp.dest(path.public.css))
+});
+
+gulp.task('scssBack', function() {
+    var onError = function(err) {
+        notify.onError({
+            title:    "Gulp",
+            subtitle: "Failure!",
+            message:  "Error: <%= error.message %>",
+            sound:    "Beep"
+        })(err);
+        this.emit('end');
+    };
+
+    return gulp.src(path.resources.sassBack + '/app.scss')
+        .pipe(plumber({errorHandler: onError}))
+        .pipe(sass())
+        .pipe(size({ gzip: true, showFiles: true }))
+        .pipe(prefix())
+        .pipe(rename('app-back.css'))
         .pipe(gulp.dest(path.public.css))
         .pipe(reload({stream:true}))
         .pipe(cssmin())
@@ -104,4 +130,4 @@ gulp.task('imgmin', function () {
         .pipe(gulp.dest(path.public.images));
 });
 
-gulp.task('default', ['browser-sync', 'js', 'imgmin', 'scss', 'watch']);
+gulp.task('default', ['browser-sync', 'js', 'imgmin', 'scssFront', 'scssBack', 'watch']);
