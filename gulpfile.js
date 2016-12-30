@@ -14,13 +14,16 @@ var gulp        = require('gulp'),
     imagemin    = require('gulp-imagemin'),
     pngquant    = require('imagemin-pngquant'),
     plumber     = require('gulp-plumber'),
-    notify      = require('gulp-notify');
+    notify      = require('gulp-notify'),
+    sourcemaps  = require('gulp-sourcemaps');
 
 var path = {
     'resources': {
         'sassFront': './resources/assets/sass/front',
         'sassBack': './resources/assets/sass/back',
         'js': './resources/assets/js',
+        'jsFront': './resources/assets/js/front/',
+        'jsBack': './resources/assets/js/back/',
         'images': './resources/assets/images'
     },
     'public': {
@@ -48,6 +51,7 @@ gulp.task('scssFront', function() {
 
     return gulp.src(path.resources.sassFront + '/app.scss')
         .pipe(plumber({errorHandler: onError}))
+        .pipe(sourcemaps.init())
         .pipe(sass())
         .pipe(size({ gzip: true, showFiles: true }))
         .pipe(prefix())
@@ -57,6 +61,7 @@ gulp.task('scssFront', function() {
         .pipe(cssmin())
         .pipe(size({ gzip: true, showFiles: true }))
         .pipe(rename({ suffix: '.min' }))
+        .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(path.public.css))
 });
 
@@ -73,6 +78,7 @@ gulp.task('scssBack', function() {
 
     return gulp.src(path.resources.sassBack + '/app.scss')
         .pipe(plumber({errorHandler: onError}))
+        .pipe(sourcemaps.init())
         .pipe(sass())
         .pipe(size({ gzip: true, showFiles: true }))
         .pipe(prefix())
@@ -82,6 +88,7 @@ gulp.task('scssBack', function() {
         .pipe(cssmin())
         .pipe(size({ gzip: true, showFiles: true }))
         .pipe(rename({ suffix: '.min' }))
+        .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(path.public.css))
 });
 
@@ -93,13 +100,40 @@ gulp.task('browser-sync', function() {
     });
 });
 
-gulp.task('js', function() {
-    gulp.src(path.resources.js + '/*.js')
+gulp.task('jsBack', function () {
+    gulp.src(
+        [
+            path.resources.jsBack + 'moment.min.js',
+            path.resources.jsBack + 'daterangepicker.js',
+            path.resources.jsBack + 'pnotify.js',
+            path.resources.jsBack + 'pnotify.buttons.js',
+            path.resources.jsBack + 'autosize.min.js',
+            path.resources.jsBack + 'app.js'
+        ])
+        .pipe(sourcemaps.init())
         .pipe(uglify())
-        .pipe(size({ gzip: true, showFiles: true }))
-        .pipe(concat('app.min.js'))
+        .pipe(size({gzip: true, showFiles: true}))
+        .pipe(concat('app-back.min.js'))
+        .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(path.public.js))
-        .pipe(reload({stream:true}));
+        .pipe(reload({stream: true}));
+});
+
+gulp.task('jsFront', function () {
+    gulp.src(
+        [
+            path.resources.jsFront + 'jquery.min.js',
+            path.resources.jsFront + 'skel.min.js',
+            path.resources.jsFront + 'util.js',
+            path.resources.jsFront + 'main.js'
+        ])
+        .pipe(sourcemaps.init())
+        .pipe(uglify())
+        .pipe(size({gzip: true, showFiles: true}))
+        .pipe(concat('app-front.min.js'))
+        .pipe(sourcemaps.write('.'))
+        .pipe(gulp.dest(path.public.js))
+        .pipe(reload({stream: true}));
 });
 
 gulp.task('scss-lint', function() {
@@ -109,14 +143,16 @@ gulp.task('scss-lint', function() {
 });
 
 gulp.task('jshint', function() {
-    gulp.src(path.resources.js + '/*.js')
+    gulp.src(path.resources.js + '/**/*.js')
         .pipe(jshint())
         .pipe(jshint.reporter('default'));
 });
 
 gulp.task('watch', function() {
-    gulp.watch(path.resources.sass + '/**/*.scss', ['scss']);
-    gulp.watch(path.resources.js + '/*.js', ['js', 'jshint']);
+    gulp.watch(path.resources.sassFront + '/**/*.scss', ['scssFront']);
+    gulp.watch(path.resources.sassBack + '/**/*.scss', ['scssBack']);
+    gulp.watch(path.resources.jsFront + '/*.js', ['jsFront', 'jshint']);
+    gulp.watch(path.resources.jsBack + '/*.js', ['jsBack', 'jshint']);
     gulp.watch(path.resources.images + '*', ['imgmin']);
 });
 
@@ -130,4 +166,4 @@ gulp.task('imgmin', function () {
         .pipe(gulp.dest(path.public.images));
 });
 
-gulp.task('default', ['browser-sync', 'js', 'imgmin', 'scssFront', 'scssBack', 'watch']);
+gulp.task('default', ['browser-sync', 'jsFront', 'jsBack', 'imgmin', 'scssFront', 'scssBack', 'watch']);

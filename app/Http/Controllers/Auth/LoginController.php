@@ -56,11 +56,11 @@ class LoginController extends Controller
             if (Auth::attempt($credentials)) {
                 // ici on passé avec succès authentification (middleware auth)
                 // et donc on a accès à nos routes protégées
-                return redirect('/admin')->with(['message' => 'success']);
+                return redirect('/admin')->with(['title' => 'Succès', 'message' => 'Authentification reussie !', 'type' => 'success']);
             } else {
                 return back()
                     ->withInput($request->only('username'))
-                    ->with(['message' => 'Combinaison incorrecte']);
+                    ->with(['title' => 'Échec', 'message' => 'L\'authentification à échoué !', 'type' => 'error']);
             }
         } else {
             return view('auth.login');

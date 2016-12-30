@@ -28,10 +28,17 @@
 
             <ul class="nav navbar-nav navbar-right">
                 <li class="">
-                    <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                        <img src="images/img.jpg" alt="">John Doe
-                        <span class=" fa fa-angle-down"></span>
-                    </a>
+                    @if(Auth::check())
+                        <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            <img src="" alt="">{{ Auth::user()->username }}
+                            <span class=" fa fa-angle-down"></span>
+                        </a>
+                    @else
+                        Utilisateur
+                    @endif
+                        @if(\Auth::user()->isAdmin())
+                            admin !
+                        @endif
                     <ul class="dropdown-menu dropdown-usermenu pull-right">
                         <li><a href="javascript:;"> Profile</a></li>
                         <li>
@@ -53,43 +60,7 @@
                     <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
                         <li>
                             <a>
-                                <span class="image"><img src="images/img.jpg" alt="Profile Image"></span>
-                                <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                                <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a>
-                                <span class="image"><img src="images/img.jpg" alt="Profile Image"></span>
-                                <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                                <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a>
-                                <span class="image"><img src="images/img.jpg" alt="Profile Image"></span>
-                                <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                                <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a>
-                                <span class="image"><img src="images/img.jpg" alt="Profile Image"></span>
+                                <span class="image"><img src="" alt="Profile Image"></span>
                                 <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>

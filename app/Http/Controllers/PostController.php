@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Post;
 use Illuminate\Http\Request;
+use App\Http\Requests\StorePost;
 
 class PostController extends Controller
 {
@@ -21,11 +23,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts                = Post::with('category', 'user', 'tags')
-            ->OrderByPublished()
-            ->OrderByScore()
-            ->paginate($this->paginate);
         $title                = 'Liste des articles';
+        $posts                = Post::all();
         $total                = [];
         $total['published']   = Post::where('status','=','published')->count();
         $total['unpublished'] = Post::where('status','=','unpublished')->count();
@@ -40,10 +39,8 @@ class PostController extends Controller
     public function create()
     {
         $title      = "Ajouter un article";
-        $categories = Category::lists('title', 'id');
-        $tags       = Tag::lists('name','id');
         $userId     = Auth::user()->id;
-        return view('admin.post.create',compact('title','categories','tags','userId'));
+        return view('admin.post.create',compact('title','userId'));
     }
 
     /**
@@ -52,9 +49,12 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StorePost $request)
     {
-        //
+        $post   = Post::create($request->all());
+
+        return redirect('admin/post')->with(['title' => 'Succés', 'message' => 'Post créer !', 'type' => 'succes']);
+//        return dd($request->all());
     }
 
     /**

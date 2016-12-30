@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <title>Blog PHP - @yield('title')</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" type="text/css">
+    {{--<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">--}}
     <link rel="stylesheet" href="{{url('assets/css/app-back.min.css')}}" media="all">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
     @yield('head')
 </head>
@@ -15,16 +15,18 @@
     <div class="main_container">
         @include('admin.partials.sidebar')
         @include('admin.partials.nav')
-        @yield('content')
+        <div class="right_col" role="main">
+            @yield('content')
+        </div>
         @include('admin.partials.footer')
     </div>
 </div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-<script src="{{url('assets/js/app.min.js')}}"></script>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="{{url('assets/js/app-back.min.js')}}"></script>
+@include('general.messages')
 </body>
 </html>
 

@@ -17,9 +17,14 @@ Route::get('/', function () {
 Route::get('home', function () {
     return view('front.index');
 });
-Route::get('admin', function () {
-    return view('admin.dashboard');
-})->middleware('auth');
+
+Route::group(['middleware' => ['auth']], function () {
+    
+    Route::get('admin', 'DashboardController@index');
+    Route::get('admin/post', 'PostController@index');
+    Route::get('admin/post/create', 'PostController@create');
+    Route::get('post', 'PostController@store');
+});
 
 Route::any('login', 'Auth\LoginController@login');
 Route::any('logout', 'Auth\LoginController@logout');
