@@ -50,4 +50,6 @@
 </article>
 @empty
 @endforelse
+<!-- Pagination -->
+{{$posts->render()}}
 @endsection

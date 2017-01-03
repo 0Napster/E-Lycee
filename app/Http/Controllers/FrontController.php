@@ -8,7 +8,7 @@ class FrontController extends Controller
 {
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::paginate(5);
         //$students = Student::all();
 
         return view('front.index', compact('posts'));

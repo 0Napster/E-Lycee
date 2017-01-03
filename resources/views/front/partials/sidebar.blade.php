@@ -3,7 +3,7 @@
 
     <!-- Intro -->
     <section id="intro">
-        <a href="#" class="logo"><img src="images/logo.jpg" alt="" /></a>
+        <a href="#" class="logo"><img src="{{url('assets/images/picto.png')}}" alt="" /></a>
         <header>
             <h2>Derniers Articles :</h2>
             <p>Bienvenue sur le meilleur Lycée de l'ardèche !</p>

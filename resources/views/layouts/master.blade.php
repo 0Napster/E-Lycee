@@ -12,7 +12,6 @@
 
 <!-- Wrapper -->
 <div id="wrapper">
-    {{--@include('front.partials.nav')--}}
     @include('front.partials.header')
 
     <div id="main">
@@ -21,20 +20,7 @@
     @section('sidebar')
         @include('front.partials.sidebar')
     @show
-    {{--@include('front.partials.footer')--}}
 </div>
-
-{{--<div id="main" role="main" class="container">--}}
-    {{--<div class="content col-md-9 col-lg-9 col-xs-12 col-sm-12">--}}
-        {{--@yield('content')--}}
-    {{--</div>--}}
-    {{--<div class="sidebar-front col-md-3 hidden-xs hidden-sm">--}}
-        {{--@section('sidebar')--}}
-            {{--@include('front.partials.sidebar')--}}
-        {{--@show--}}
-    {{--</div>--}}
-{{--</div>--}}
-
 <script type="text/javascript" src="{{url('assets/js/app-front.min.js')}}"></script>
 </body>
 </html>

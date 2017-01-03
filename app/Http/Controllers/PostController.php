@@ -14,7 +14,7 @@ class PostController extends Controller
      *
      * @var integer
      */
-    private $paginate = 10;
+    private $paginate = 5;
 
     /**
      * Display a listing of the resource.

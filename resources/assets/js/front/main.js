@@ -14,7 +14,8 @@
 			$body = $('body'),
 			$menu = $('#menu'),
 			$sidebar = $('#sidebar'),
-			$main = $('#main');
+			$main = $('#main'),
+			$pagination = $('.pagination');
 
 		// Disable animations/transitions until the page has loaded.
 			$body.addClass('is-loading');
@@ -103,7 +104,10 @@
 					.on('-large', function() {
 						$intro.prependTo($sidebar);
 					});
-
+		$pagination
+			.addClass('actions').each(function () {
+			$(this).find('a, span').addClass('button big')
+		});
 	});
 
 })(jQuery);

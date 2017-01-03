@@ -53,3 +53,7 @@
         <p>pas de d'article</p>
     @endif
 @stop
+
+@section('sidebar')
+
+@stop

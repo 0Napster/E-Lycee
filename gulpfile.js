@@ -24,7 +24,7 @@ var path = {
         'js': './resources/assets/js',
         'jsFront': './resources/assets/js/front/',
         'jsBack': './resources/assets/js/back/',
-        'images': './resources/assets/images'
+        'images': './resources/assets/images/'
     },
     'public': {
         'css': './public/assets/css',
