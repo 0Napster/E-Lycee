@@ -18,6 +18,14 @@ Route::get('home', function () {
     return view('front.index');
 });
 
+Route::get('/mentions', function () {
+    return view('front.mentions');
+});
+
+Route::get('/contact', function () {
+    return view('front.contact');
+});
+
 Route::group(['middleware' => ['auth']], function () {
     
     Route::get('admin', 'DashboardController@index');

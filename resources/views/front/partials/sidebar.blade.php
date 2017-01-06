@@ -5,7 +5,7 @@
     <section id="intro">
         <a href="#" class="logo"><img src="{{url('assets/images/picto.png')}}" alt="" /></a>
         <header>
-            <h2>Derniers Articles :</h2>
+            <h2>E-lycee :</h2>
             <p>Bienvenue sur le meilleur Lycée de l'ardèche !</p>
         </header>
     </section>
@@ -110,10 +110,10 @@
 
     <!-- About -->
     <section class="blurb">
-        <h2>About</h2>
+        <h2>Le Lycée</h2>
         <p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod amet placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at phasellus sed ultricies.</p>
         <ul class="actions">
-            <li><a href="#" class="button">Learn More</a></li>
+            <li><a href="{{url('/mentions')}}" class="button">Learn More</a></li>
         </ul>
     </section>
 
@@ -122,9 +122,8 @@
         <ul class="icons">
             <li><a href="#" class="fa-twitter"><span class="label">Twitter</span></a></li>
             <li><a href="#" class="fa-facebook"><span class="label">Facebook</span></a></li>
-            <li><a href="#" class="fa-instagram"><span class="label">Instagram</span></a></li>
-            <li><a href="#" class="fa-rss"><span class="label">RSS</span></a></li>
-            <li><a href="#" class="fa-envelope"><span class="label">Email</span></a></li>
+            <li><a href="{{url('/mentions')}}">Mentions Légales</a></li>
+            <li><a href="{{url('/contact')}}">Contact</a></li>
         </ul>
         <p class="copyright">&copy; 2016 - E-lycee</p>
     </section>
