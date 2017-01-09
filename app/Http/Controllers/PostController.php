@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Auth;
 use App\Post;
+use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
 use App\Http\Requests\StorePost;
 
@@ -57,11 +58,21 @@ class PostController extends Controller
      */
     public function store(StorePost $request)
     {
-
         $post = Post::create($request->all());
 
+        $im = $request->file('url_thumbnail');
+        if (!empty($im)) {
+            $ext = $im->getClientOriginalExtension();
+            $uri = str_random(30) . '.' . $ext;
+
+            $post->url_thumbnail = $uri;
+
+            $im->move(public_path() . '/assets/images/posts', $uri);
+
+            $post->save();
+        }
+
         return redirect('admin/post')->with(['title' => 'Succès', 'message' => 'Post créé !', 'type' => 'success']);
-//      return dd($request->all());
     }
 
     /**
@@ -101,7 +112,37 @@ class PostController extends Controller
     {
         $post = Post::find($id);
 
+        $prev_thumb = $post->url_thumbnail;
         $post->update($request->all());
+
+        if (!empty($request->input('delete_image'))) {
+            $fileName = public_path() . '/assets/images/posts' . '/' . $prev_thumb;
+            if (File::exists($fileName)) {
+                File::delete($fileName);
+            }
+            $post->url_thumbnail = null;
+            $post->save();
+        }
+
+        $im = $request->file('url_thumbnail');
+
+        if (!empty($im)) {
+            $ext = $im->getClientOriginalExtension();
+            $uri = str_random(30) . '.' . $ext;
+
+            $fileName = public_path() . '/assets/images/posts' . '/' . $prev_thumb;
+            if (File::exists($fileName)) {
+                File::delete($fileName);
+            }
+
+            $post->url_thumbnail = $uri;
+
+            $im->move(public_path() . '/assets/images/posts', $uri);
+
+            $post->save();
+
+        }
+
 
         return redirect('admin/post/' . $id . '/edit')->with(['title' => 'Succès', 'message' => 'Post modifié !', 'type' => 'success']);
     }

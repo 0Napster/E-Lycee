@@ -10139,6 +10139,13 @@ ul.notifications {
 .panel_toolbox > li {
   float: right; }
 
+.site_title i {
+  padding: 8px 6px; }
+
+.thumbnail_edit {
+  max-width: 300px;
+  height: auto; }
+
 .ui-pnotify {
   top: 36px;
   right: 36px;

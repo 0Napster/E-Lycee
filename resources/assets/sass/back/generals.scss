@@ -2,7 +2,15 @@
   float: none;
   margin-left: 0;
 }
-
-.panel_toolbox>li {
+.panel_toolbox > li {
   float: right;
+}
+// Admin Header
+
+.site_title i {
+  padding: 8px 6px;
+}
+.thumbnail_edit{
+  max-width: 300px;
+  height: auto;
 }

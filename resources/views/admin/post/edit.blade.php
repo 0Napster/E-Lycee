@@ -53,28 +53,46 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Image</label>
+                            <label for="file" class="control-label col-md-3 col-sm-3 col-xs-12">Image</label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input id="input-1" type="file" class="file" name="url_thumbnail">
+                                <input id="input-1" type="file" class="file" name="url_thumbnail"
+                                       value="{{$post->url_thumbnail}}">
+                                @if(isset($post->url_thumbnail))
+                                    <img src="{{'/assets/images/posts' . '/' . $post->url_thumbnail}}" class="thumbnail_edit"/>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="delete_image" class="control-label col-md-3 col-sm-3 col-xs-12">Supprimer
+                                l'image</label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input id="delete_image" type="checkbox"
+                                       name="delete_image">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Statut</label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <div id="status" class="btn-group" data-toggle="buttons">
-                                    <label class="btn btn-{{check_radio_class($post->status, 'published')}}" data-toggle-class="btn-primary"
+                                    <label class="btn btn-{{check_radio_class($post->status, 'published')}}"
+                                           data-toggle-class="btn-primary"
                                            data-toggle-passive-class="btn-default">
-                                        <input {{check_radio_edit($post->status, 'published')}} type="radio" name="status" value="published">
+                                        <input {{check_radio_edit($post->status, 'published')}} type="radio"
+                                               name="status" value="published">
                                         &nbsp; Publié &nbsp;
                                     </label>
-                                    <label class="btn btn-{{check_radio_class($post->status, 'unpublished')}}" data-toggle-class="btn-primary"
+                                    <label class="btn btn-{{check_radio_class($post->status, 'unpublished')}}"
+                                           data-toggle-class="btn-primary"
                                            data-toggle-passive-class="btn-default">
-                                        <input {{check_radio_edit($post->status, 'unpublished')}} type="radio" name="status" value="unpublished">
+                                        <input {{check_radio_edit($post->status, 'unpublished')}} type="radio"
+                                               name="status" value="unpublished">
                                         Non Publié
                                     </label>
-                                    <label class="btn btn-{{check_radio_class($post->status, 'trashed')}}" data-toggle-class="btn-primary"
+                                    <label class="btn btn-{{check_radio_class($post->status, 'trashed')}}"
+                                           data-toggle-class="btn-primary"
                                            data-toggle-passive-class="btn-default">
-                                        <input {{check_radio_edit($post->status, 'trashed')}} type="radio" name="status" value="trashed">
+                                        <input {{check_radio_edit($post->status, 'trashed')}} type="radio" name="status"
+                                               value="trashed">
                                         Archivé
                                     </label>
                                 </div>
@@ -103,7 +121,7 @@
     <button class="btn btn-default source" onclick="new PNotify({
                                   title: 'Regular Success',
                                   text: 'That thing that you were trying to do worked!',
-                                  type: 'error',
+                                  type: 'success',
                                   styling: 'bootstrap3'
                               });">test notify
     </button>

@@ -15,7 +15,7 @@
                     <p>Lorem ipsum dolor amet nullam consequat etiam feugiat</p>
                 </div>
                 <div class="meta">
-                    @if(!is_null($post->published_at))
+                    @if(!is_null($post->date))
                         <time class="published"
                               datetime="{{$post->date}}"> {{$post->date}}</time>
                     @else
@@ -34,12 +34,12 @@
             @if(!is_null($post->url_thumbnail))
                 <span class="image featured"><img src="/assets/images/posts/{{ $post->url_thumbnail }}" alt=""/></span>
             @else
-                <p>pas d'images</p>
+                <p>Pas d'image</p>
             @endif
             @if(!empty($post->content))
                 <p>{{$post->content}} </p>
             @else
-                <p>pas de contenu</p>
+                <p>Pas de contenu</p>
             @endif
             <footer>
                 <ul class="stats">

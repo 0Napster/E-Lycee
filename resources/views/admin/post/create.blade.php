@@ -49,12 +49,6 @@
                                           name="content">{{old('content')}}</textarea>
                             </div>
                         </div>
-                        <!--<div class="form-group">
-                            <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Image</label>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input id="input-1" type="file" class="file">
-                            </div>
-                        </div>-->
                         <div class="form-group">
                             <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Image</label>
                             <div class="col-md-6 col-sm-6 col-xs-12">

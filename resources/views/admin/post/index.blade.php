@@ -2,7 +2,7 @@
 @section('content')
     <div class="page-title">
         <div class="title_left">
-            <h3>Les Articles <small>listes des artciles à administrer</small></h3>
+            <h3>Les Articles <small>Liste des articles à administrer</small></h3>
         </div>
 
         <div class="title_right">
