@@ -10136,6 +10136,9 @@ ul.notifications {
   float: none;
   margin-left: 0; }
 
+.panel_toolbox > li {
+  float: right; }
+
 .ui-pnotify {
   top: 36px;
   right: 36px;

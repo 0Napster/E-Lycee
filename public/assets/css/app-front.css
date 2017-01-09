@@ -3471,6 +3471,13 @@ form {
       width: 2.5em; }
     form.search > input:first-child {
       padding-left: 2.5em; }
+  form input[type="text"],
+  form input[type="password"],
+  form input[type="email"],
+  form input[type="tel"],
+  form select,
+  form textarea {
+    margin: 1.5em 0; }
 
 label {
   color: #3c3b3b;
