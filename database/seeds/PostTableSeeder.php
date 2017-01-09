@@ -11,6 +11,17 @@ class PostTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(\App\Post::class, 15)->create();
+
+        $upload = public_path('assets/images/posts');
+
+        $files = File::allFiles($upload);
+
+        foreach ($files as $file) {
+            File::delete($file);
+        }
+
+        factory(\App\Post::class, 15)->create()->each(function ($post) use ($upload) {
+            dl_images($post, $upload, 'tall');
+        });
     }
 }

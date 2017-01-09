@@ -13,7 +13,7 @@ class StorePost extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,14 +24,12 @@ class StorePost extends FormRequest
     public function rules()
     {
         return [
-            'title'        => 'required|string',
-            'abstract'     => 'required',
-            'content'      => 'required',
-            'user_id'      => 'integer',
-            'status'       => 'in:published,unpublished',
-            'published_at' => 'date:Y-m-d H:i:s',
-            'picture'      => 'image|max:1000',
-            'picture_name' => 'string|max:40'
+            'title' => 'required|max:255',
+            'abstract' => 'required|max:255',
+            'content' => 'required|max:255',
+            'date' => 'max:255',
+            'status' => 'in:published,unpublished,trashed',
+            'published_at' => 'string|max:255'
         ];
     }
 }

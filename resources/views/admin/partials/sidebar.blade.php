@@ -5,7 +5,7 @@
         </div>
         <div class="profile">
             <div class="profile_pic">
-                <img src="" alt="..." class="img-circle profile_img">
+                <img src="/assets/images/users/{{ Auth::user()->url_thumbnail }}" alt="..." class="img-circle profile_img">
             </div>
             <div class="profile_info">
                 <span>Bienvenue,</span>

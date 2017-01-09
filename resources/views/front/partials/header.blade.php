@@ -12,7 +12,10 @@
 	</nav>
 	<nav class="main">
 		<ul>
-			<li><a class="fa-sign-in" href="{{url('/login')}}">Se connecter</a></li>
+			@if(Auth::check())
+				<li><a class="fa-cogs" href="{{url('/admin')}}" title="Accéder à l'admin">Admin</a></li>
+			@endif
+			<li><a class="fa-sign-in" href="{{url('/login')}}" title="Se connecter">Se connecter</a></li>
 			<li class="search">
 				<a class="fa-search" href="#search">Search</a>
 				<form id="search" method="get" action="#">

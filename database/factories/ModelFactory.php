@@ -26,13 +26,16 @@ $factory->define(\App\Post::class, function (Faker\Generator $faker) {
     $statusTable = ['published', 'unpublished', 'trashed'];
     $rand = rand(0, 2);
 
+    $date = new DateTime($faker->date);
+    $date = strval($date->format('d/m/Y'));
+
     return [
         'user_id' => 1,
         'title' => $faker->sentence,
         'abstract' => $faker->sentence,
-        'content' => $faker->paragraph(),
+        'content' => $faker->text(255),
         'url_thumbnail' => $faker->imageUrl(),
-        'date' => $faker->dateTime,
+        'date' => $date,
         'status' => $statusTable[$rand]
     ];
 });
@@ -69,9 +72,9 @@ $factory->define(\App\Score::class, function (Faker\Generator $faker) {
     $questionID = rand(1, 4);
     $statusTable = ['done', 'undone'];
     $rand2 = rand(0, 1);
-    if($rand2 != 1){
+    if ($rand2 != 1) {
         $randNote = rand(0, 1);
-    }else{
+    } else {
         $randNote = 0;
     }
 

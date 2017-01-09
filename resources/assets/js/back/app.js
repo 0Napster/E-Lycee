@@ -158,9 +158,12 @@ $(document).ready(function () {
 <!-- bootstrap-daterangepicker -->
 
 $(document).ready(function() {
-    $('#birthday').daterangepicker({
+    $('#date').daterangepicker({
         singleDatePicker: true,
-        calender_style: "picker_4"
+        calender_style: "picker_4",
+        locale: {
+            format: 'DD/MM/YYYY'
+        }
     }, function(start, end, label) {
         console.log(start.toISOString(), end.toISOString(), label);
     });

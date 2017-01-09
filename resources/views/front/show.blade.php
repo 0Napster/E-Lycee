@@ -17,22 +17,22 @@
                 <div class="meta">
                     @if(!is_null($post->published_at))
                         <time class="published"
-                              datetime="{{$post->published_at->format('d/m/Y')}}">{{$post->published_at->format('d/m/Y')}}</time>
+                              datetime="{{$post->date}}"> {{$post->date}}</time>
                     @else
                         <time class="published"
                               datetime="{{$post->created_at->format('d/m/Y')}}">{{$post->created_at->format('d/m/Y')}}</time>
                     @endif
                     @if(!is_null($post->user->username))
                         <a href="#" class="author"><span class="name">{{$post->user->username}}</span><img
-                                    src="images/avatar.jpg" alt=""/></a>
+                                    src="/assets/images/users/{{ $post->user->url_thumbnail }}" alt=""/></a>
                     @else
-                        <a href="#" class="author"><span class="name">Anonyme</span><img src="images/avatar.jpg"
+                        <a href="#" class="author"><span class="name">Anonyme</span><img src=""
                                                                                          alt=""/></a>
                     @endif
                 </div>
             </header>
             @if(!is_null($post->url_thumbnail))
-                <span class="image featured"><img src="{{$post->url_thumbnail}}" alt=""/></span>
+                <span class="image featured"><img src="/assets/images/posts/{{ $post->url_thumbnail }}" alt=""/></span>
             @else
                 <p>pas d'images</p>
             @endif

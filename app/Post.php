@@ -20,6 +20,7 @@ class Post extends Model
         'url_thumbnail',
         'date',
         'status',
+        'updated_at'
     ];
 
     /**

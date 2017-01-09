@@ -87,8 +87,8 @@
                                 @endif
                             </td>
                             <td>
-                                <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View </a>
-                                <a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
+                                <a href="{{url('/article/'.$post->id)}}" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View </a>
+                                <a href="{{url('/admin/post/'.$post->id.'/edit')}}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
                                 <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
                             </td>
                         </tr>
