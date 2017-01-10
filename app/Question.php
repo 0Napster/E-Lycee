@@ -14,4 +14,14 @@ class Question extends Model
     protected $fillable = [
         'title', 'content', 'status', 'class_level',
     ];
+
+    /**
+     * choice relationship
+     *
+     * @return relation
+     */
+    public function choices()
+    {
+        return $this->hasMany('App\Choice');
+    }
 }

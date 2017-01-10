@@ -18,11 +18,10 @@
                 <div class="x_content">
                     <br>
                     <form class="form-horizontal form-label-left" method="POST"
-                          action="{{url('admin/post/store')}}"
+                          action="{{url('admin/qcm/store')}}"
                           enctype="multipart/form-data">
                         {{method_field('POST')}}
                         {{csrf_field()}}
-                        <input type="hidden" name="user_id" value="{{$userId}}">
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="title">Titre <span
                                         class="required">*</span>
@@ -33,28 +32,35 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="abstract">Extrait <span
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Niveau <span
                                         class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="text" id="abstract" name="abstract" required="required"
-                                       class="form-control col-md-7 col-xs-12">
+                                <div id="status" class="btn-group" data-toggle="buttons">
+                                    <label class="btn btn-primary"
+                                           data-toggle-class="btn-primary"
+                                           data-toggle-passive-class="btn-default">
+                                        <input type="radio"
+                                               name="class_level" value="terminale" checked>
+                                        &nbsp; Terminale &nbsp;
+                                    </label>
+                                    <label class="btn btn-default"
+                                           data-toggle-class="btn-primary"
+                                           data-toggle-passive-class="btn-default">
+                                        <input type="radio"
+                                               name="class_level" value="premiere">
+                                        Premiere
+                                    </label>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Contenu de l'article <span
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Question <span
                                         class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <textarea class="resizable_textarea form-control" placeholder=""
-                                          style="overflow: hidden; word-wrap: break-word; resize: horizontal; height: 54px;"
-                                          name="content">{{old('content')}}</textarea>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Image</label>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input id="input-1" type="file" class="file" name="url_thumbnail">
+                                <textarea name="content" class="resizable_textarea form-control" placeholder=""
+                                          style="overflow: hidden; word-wrap: break-word; resize: horizontal; height: 54px;">{{old('content')}}</textarea>
                             </div>
                         </div>
                         <div class="form-group">
@@ -63,31 +69,21 @@
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <div id="status" class="btn-group" data-toggle="buttons">
-                                    <label class="btn btn-default" data-toggle-class="btn-primary"
+                                    <label class="btn btn-primary"
+                                           data-toggle-class="btn-primary"
                                            data-toggle-passive-class="btn-default">
-                                        <input type="radio" name="status" value="published">
+                                        <input checked type="radio"
+                                               name="status" value="published">
                                         &nbsp; Publié &nbsp;
                                     </label>
-                                    <label class="btn btn-primary" data-toggle-class="btn-primary"
+                                    <label class="btn btn-default"
+                                           data-toggle-class="btn-primary"
                                            data-toggle-passive-class="btn-default">
-                                        <input type="radio" name="status" value="unpublished">
+                                        <input  type="radio"
+                                               name="status" value="unpublished">
                                         Non Publié
                                     </label>
-                                    <label class="btn btn-primary" data-toggle-class="btn-primary"
-                                           data-toggle-passive-class="btn-default">
-                                        <input type="radio" name="status" value="trashed">
-                                        Archivé
-                                    </label>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Date de publication <span
-                                        class="required">*</span>
-                            </label>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input id="date" name="date" class="date-picker form-control col-md-7 col-xs-12"
-                                       required="required" type="text">
                             </div>
                         </div>
                         <div class="ln_solid"></div>

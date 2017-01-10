@@ -29,10 +29,16 @@
                             <li><a href="{{url('/')}}">Retour au site</a></li>
                         </ul>
                     </li>
-                    <li><a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>
+                    <li><a><i class="fa fa-edit"></i> Articles <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
                             <li><a href="{{url('/admin/post')}}">Listes des articles</a></li>
                             <li><a href="{{url('/admin/post/create')}}">Création d'un article</a></li>
+                        </ul>
+                    </li>
+                    <li><a><i class="fa fa-edit"></i> QCMs <span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                            <li><a href="{{url('/admin/qcm')}}">Listes des QCMs</a></li>
+                            <li><a href="{{url('/admin/qcm/create')}}">Création d'un QCM</a></li>
                         </ul>
                     </li>
                 </ul>

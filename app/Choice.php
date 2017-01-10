@@ -14,4 +14,14 @@ class Choice extends Model
     protected $fillable = [
         'question_id', 'content', 'status',
     ];
+
+    /**
+     * question relationship
+     *
+     * @return relation
+     */
+    public function question()
+    {
+        return $this->belongsTo('App\Question');
+    }
 }

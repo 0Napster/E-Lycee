@@ -2,8 +2,8 @@
 @section('content')
     <div class="page-title">
         <div class="title_left">
-            <h3>Les Articles
-                <small>Liste des articles à administrer</small>
+            <h3>Les QCMs
+                <small>Liste des QCMs à administrer</small>
             </h3>
         </div>
 
@@ -23,7 +23,7 @@
         <div class="col-md-12">
             <div class="x_panel">
                 <div class="x_title">
-                    <h2>Articles</h2>
+                    <h2>QCMs</h2>
                     <ul class="nav navbar-right panel_toolbox">
                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                         </li>
@@ -33,52 +33,47 @@
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
-
                     <p>Publié ({{$total['published']}}), Non Publié ({{$total['unpublished']}}) </p>
 
-                    <!-- start article list -->
+                    <!-- start qcm list -->
                     <table class="table table-striped projects">
                         <thead>
                         <tr>
                             <th style="width: 1%">#</th>
-                            <th style="width: 20%">Nom de l'article</th>
-                            <th>Auteur</th>
+                            <th style="width: 20%">Nom du QCM</th>
+                            <th>Niveau</th>
                             <th>Status</th>
                             <th style="width: 20%">Édition</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @forelse($posts as $post)
+                        @forelse($qcms as $qcm)
                             <tr>
-                                <td>{{$post->id}}</td>
+                                <td>{{$qcm->id}}</td>
                                 <td>
-                                    <a>{{$post->title}}</a>
+                                    <a>{{$qcm->title}}</a>
                                     <br>
-                                    <small>Publié le : @if(!is_null($post->date))
-                                            le {{$post->date}}
-                                        @else
-                                            le {{$post->created_at->format('d/m/Y')}}
+                                    <small>Créé le : @if(!is_null($qcm->created_at))
+                                            le {{$qcm->created_at->format('d/m/Y')}}
                                         @endif
                                     </small>
                                 </td>
                                 <td>
-                                    <a href="#">{{$post->user->username}}</a>
+                                    <a href="#">{{ucfirst($qcm->class_level)}}</a>
                                 </td>
-                                <td>@if(($post->status) == "trashed")
-                                        <button type="button" class="btn btn-danger btn-xs">{{$post->status}}</button>
-                                    @elseif (($post->status) == "unpublished")
-                                        <button type="button" class="btn btn-warning btn-xs">{{$post->status}}</button>
+                                <td>@if (($qcm->status) == "unpublished")
+                                        <button type="button" class="btn btn-warning btn-xs">{{$qcm->status}}</button>
                                     @else
-                                        <button type="button" class="btn btn-success btn-xs">{{$post->status}}</button>
+                                        <button type="button" class="btn btn-success btn-xs">{{$qcm->status}}</button>
                                     @endif
                                 </td>
                                 <td>
-                                    <a href="{{url('/article/'.$post->id)}}" class="btn btn-primary btn-xs"><i
+                                    <a href="{{url('/qcm/'.$qcm->id)}}" class="btn btn-primary btn-xs"><i
                                                 class="fa fa-folder"></i> View </a>
-                                    <a href="{{url('/admin/post/'.$post->id.'/edit')}}" class="btn btn-info btn-xs"><i
+                                    <a href="{{url('/admin/qcm/'.$qcm->id.'/edit')}}" class="btn btn-info btn-xs"><i
                                                 class="fa fa-pencil"></i> Edit </a>
                                     <button type="button" class="btn btn-danger btn-xs btn-pre-delete"
-                                            data-postid="{{$post->id}}"
+                                            data-qcmid="{{$qcm->id}}"
                                             data-toggle="modal" data-target=".bs-example-modal-lg"><i
                                                 class="fa fa-trash-o"></i> Delete
                                     </button>
@@ -86,12 +81,12 @@
                             </tr>
                         @empty
                             <tr>
-                                <td>Il n'y a aucun article à administrer.</td>
+                                <td>Il n'y a aucun qcm à administrer.</td>
                             </tr>
                         @endforelse
                         </tbody>
                     </table>
-                    <!-- end article list -->
+                    <!-- end qcm list -->
                 </div>
             </div>
         </div>
@@ -103,7 +98,7 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
                     </button>
-                    <h4 class="modal-title" id="myModalLabel">Voulez-vous vraiment supprimer cet article ?</h4>
+                    <h4 class="modal-title" id="myModalLabel">Voulez-vous vraiment supprimer ce QCM ?</h4>
                 </div>
                 <div class="modal-footer">
                     <a href="#" type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-close"></i>

@@ -178,3 +178,4 @@ function createNewNotify(title, message, type) {
         styling: 'bootstrap3'
     });
 }
+
