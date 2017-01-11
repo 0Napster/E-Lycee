@@ -34,12 +34,12 @@ class Post extends Model
     }
 
     /**
-     * score relationship
+     * comment relationship
      *
      * @return relation
      */
-    public function score()
+    public function comments()
     {
-        return $this->hasMany('App\Score');
+        return $this->hasMany('App\Comment');
     }
 }

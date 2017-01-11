@@ -8,6 +8,7 @@
 
 @section('content')
     @if($post)
+        @include('general.messages')
         <article class="post">
             <header>
                 <div class="title">
@@ -41,13 +42,42 @@
             @else
                 <p>Pas de contenu</p>
             @endif
-            <footer>
-                <ul class="stats">
-                    <li><a href="#">General</a></li>
-                    <li><a href="#" class="icon fa-heart">28</a></li>
-                    <li><a href="#" class="icon fa-comment">128</a></li>
-                </ul>
-            </footer>
+            @if($post->comments)
+                <h3>{{$post->comments->count()}} commentaire(s)</h3>
+            @else
+                0 commentaire
+            @endif
+            @forelse($post->comments as $comment)
+                <div class="single-comment">
+                    <h4>{{$comment->title}}
+                        <span>le</span>
+                        @if($comment->date)
+                            {{$comment->date->format('d/m/Y')}}
+                        @endif
+                    </h4>
+                    <div class="txt-comment">
+                        <p>{{$comment->content}}</p>
+                    </div>
+                </div>
+            @empty
+                <p>0 commentaire </p>
+            @endforelse
+            <div class="form-comment">
+                <h3>Ajouter un commentaire</h3>
+                <form action="{{url('comment')}}" method="POST" class="col-md-6">
+                    {{csrf_field()}}
+                    <div class="form-group">
+                        <input type="text" name="title" id="nom" placeholder="Pseudo" class="form-control" value="{{old('title')}}" />
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="content" placeholder="Votre message"
+                                  class="form-control" value="{{old('content')}}" ></textarea>
+                    </div>
+                    <input type="hidden" name="date" value="{{date('Y-m-d H:i:s')}}">
+                    <input type="hidden" name="post_id" value="{{$post->id}}">
+                    <button type="submit">Envoyer</button>
+                </form>
+            </div>
         </article>
     @else
         <p>pas de d'article</p>

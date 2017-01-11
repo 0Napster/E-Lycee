@@ -54,6 +54,7 @@ Route::get('/', 'FrontController@index')->name('index');
 Route::get('/article/{id}', 'FrontController@showPost')->name('article');
 Route::get('/qcm/{id}', 'FrontController@showQcm')->name('qcm');
 Route::get('search', 'SearchController@getIndex');
+Route::resource('comment', 'CommentController');
 
 /*MAIL*/
 Route::any('/send', 'EmailController@send');

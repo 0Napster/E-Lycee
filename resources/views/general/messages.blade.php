@@ -1,6 +1,6 @@
 @if(Session::has('messageFront'))
     <p>{{Session::get('messageFront')}}</p>
-@else
+@elseif (Session::has('message'))
     <script>
         var title = '{{Session::get('title')}}';
         var message = '{{Session::get('message')}}';

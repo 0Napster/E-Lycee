@@ -18,8 +18,8 @@
 			<li><a class="fa-sign-in" href="{{url('/login')}}" title="Se connecter">Se connecter</a></li>
 			<li class="search">
 				<a class="fa-search" href="#search">Search</a>
-				<form id="search" method="get" action="#">
-					<input type="text" name="query" placeholder="Search" />
+				<form id="search" method="get" action="/search">
+					<input type="text" name="search" placeholder="Search" />
 				</form>
 			</li>
 			<li class="menu">

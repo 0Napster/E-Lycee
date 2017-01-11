@@ -30,11 +30,11 @@ if (!function_exists('dl_images')) {
     function dl_images($class, $target, $size)
     {
         if ($size == 'tall') {
-            $filename = file_get_contents('http://lorempixel.com/640/480');
+            $filename = file_get_contents('http://unsplash.it/640/480/?random');
         } elseif ($size == 'small') {
-            $filename = file_get_contents('http://lorempixel.com/128/128');
+            $filename = file_get_contents('http://unsplash.it/128/128/?random');
         } else {
-            $filename = file_get_contents('http://lorempixel.com/640/480');
+            $filename = file_get_contents('http://unsplash.it/640/480/?random');
         }
 
         $uri = str_random(30) . '.jpg';

@@ -40,6 +40,16 @@ $factory->define(\App\Post::class, function (Faker\Generator $faker) {
     ];
 });
 
+$factory->define(App\Comment::class, function (Faker\Generator $faker) {
+    $id = rand(1,9);
+    return [
+        'title' => $faker->sentence($nbWords = 1, $variableNbWords = true),
+        'content' => $faker->paragraph(1),
+        'post_id' => $id,
+        'date' => $faker->dateTime($max = 'now'),
+    ];
+});
+
 $factory->define(\App\Question::class, function (Faker\Generator $faker) {
     $statusTable = ['published', 'unpublished'];
     $rand = rand(0, 1);

@@ -42,12 +42,15 @@
             @endif
             <footer>
                 <ul class="actions">
-                    <li><a href="/article/{{$post->id}}" class="button big">Continue Reading</a></li>
+                    <li><a href="/article/{{$post->id}}" class="button big">Lire la suite...</a></li>
                 </ul>
                 <ul class="stats">
-                    <li><a href="#">General</a></li>
-                    <li><a href="#" class="icon fa-heart">28</a></li>
-                    <li><a href="#" class="icon fa-comment">128</a></li>
+                    <li><a>Réactions :</a></li>
+                    @if($post->comments)
+                        <li><a class="icon fa-comment">{{$post->comments->count()}}</a></li>
+                    @else
+                        <li><a class="icon fa-comment">0</a></li>
+                    @endif
                 </ul>
             </footer>
         </article>
