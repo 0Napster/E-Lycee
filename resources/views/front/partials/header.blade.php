@@ -3,11 +3,8 @@
 	<h1><a href="{{url('/')}}">E-Lycee</a></h1>
 	<nav class="links">
 		<ul>
-			<li><a href="#">Lorem</a></li>
-			<li><a href="#">Ipsum</a></li>
-			<li><a href="#">Feugiat</a></li>
-			<li><a href="#">Tempus</a></li>
-			<li><a href="#">Adipiscing</a></li>
+			<li><a href="{{url('/mentions')}}">Mentions Légales</a></li>
+			<li><a href="{{url('/contact')}}">Contact</a></li>
 		</ul>
 	</nav>
 	<nav class="main">
@@ -17,13 +14,13 @@
 			@endif
 			<li><a class="fa-sign-in" href="{{url('/login')}}" title="Se connecter">Se connecter</a></li>
 			<li class="search">
-				<a class="fa-search" href="#search">Search</a>
+				<a class="fa-search" href="#search" title="Recherche d'articles">Recherche d'articles</a>
 				<form id="search" method="get" action="/search">
-					<input type="text" name="search" placeholder="Search" />
+					<input type="text" name="search" placeholder="Recherche d'articles" />
 				</form>
 			</li>
 			<li class="menu">
-				<a class="fa-bars" href="#menu">Menu</a>
+				<a class="fa-bars" href="#menu" title="Menu">Menu</a>
 			</li>
 		</ul>
 	</nav>
@@ -35,8 +32,8 @@
 	<!-- Search -->
 	<section>
 		<form class="search" action="/search" method="GET">
-			<input type="text" name="search" placeholder="Search" />
-			<button type="submit">Search</button>
+			<input type="text" name="search" placeholder="Recherche d'articles" />
+			<button type="submit">Rechercher</button>
 		</form>
 	</section>
 
