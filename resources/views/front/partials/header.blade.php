@@ -34,8 +34,9 @@
 
 	<!-- Search -->
 	<section>
-		<form class="search" method="get" action="#">
-			<input type="text" name="query" placeholder="Search" />
+		<form class="search" action="/search" method="GET">
+			<input type="text" name="search" placeholder="Search" />
+			<button type="submit">Search</button>
 		</form>
 	</section>
 
