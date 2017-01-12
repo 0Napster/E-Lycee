@@ -11,7 +11,7 @@ class QuestionTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(\App\Question::class, 2)->create(['status' => 'published']);
-        factory(\App\Question::class, 2)->create();
+        factory(\App\Question::class, 2)->create(['status' => 'published', 'class_level' => 'premiere']);
+        factory(\App\Question::class, 2)->create(['status' => 'published', 'class_level' => 'terminale']);
     }
 }

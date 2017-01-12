@@ -9,8 +9,10 @@
 	</nav>
 	<nav class="main">
 		<ul>
-			@if(Auth::check())
+			@if(Auth::check() && Auth::user()->role == 'teacher')
 				<li><a class="fa-cogs" href="{{url('/admin')}}" title="Accéder à l'admin">Admin</a></li>
+			@else
+				<li><a class="fa-cogs" href="{{url('/student')}}" title="Accéder à l'admin">Admin</a></li>
 			@endif
 			<li><a class="fa-sign-in" href="{{url('/login')}}" title="Se connecter">Se connecter</a></li>
 			<li class="search">

@@ -27,13 +27,12 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="{{url('assets/js/app-back.min.js')}}"></script>
 <script>
-    //Ce script ne sera lancé que si l'on est sur la page de liste des articles
+    //Ce script ne sera lancé que si l'on est sur la page de liste des articles ou des qcms
     if ($('.btn-pre-delete').length != 0) {
         $('.btn-pre-delete').bind('click', function (e) {
             e.preventDefault();
             let id = $(this).data('id');
             let type = $(this).data('type');
-            console.log(type);
             $('.btn-delete').bind('click', function (e) {
                 e.preventDefault();
                 e.stopPropagation();
@@ -47,7 +46,7 @@
                     success: function (data) {
                         new PNotify({
                             title: 'Succès',
-                            text: 'L \'article a été supprimé',
+                            text: 'Suppression réussi',
                             type: 'success',
                             styling: 'bootstrap3'
                         });
@@ -58,7 +57,7 @@
                     error: function () {
                         new PNotify({
                             title: 'Erreur',
-                            text: 'L \'article n\'a pas pu être supprimé',
+                            text: 'La suppression échoué',
                             type: 'warning',
                             styling: 'bootstrap3'
                         });

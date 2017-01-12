@@ -54,8 +54,9 @@ Route::group(['middleware' => ['auth']], function () {
      * STUDENT
      * */
     Route::get('student', 'StudDashboardController@index');
-    Route::get('student/qcm', 'QcmController@studQcms');
+    Route::get('student/qcm', 'StudDashboardController@showStudQcms');
     Route::get('student/qcm/{id}/answer', 'StudDashboardController@answer');
+    Route::any('student/qcm/{id}/update', 'StudDashboardController@update');
 });
 
 Route::any('login', 'Auth\LoginController@login');
@@ -63,7 +64,6 @@ Route::any('logout', 'Auth\LoginController@logout');
 
 Route::get('/', 'FrontController@index')->name('index');
 Route::get('/article/{id}', 'FrontController@showPost')->name('article');
-Route::get('/qcm/{id}', 'FrontController@showQcm')->name('qcm');
 Route::get('search', 'SearchController@getIndex');
 Route::resource('comment', 'CommentController');
 

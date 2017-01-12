@@ -41,10 +41,10 @@
                         <h2>Question : {{$qcm->content}}</h2>
                         @forelse($choices as $choice)
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                <label class="control-label col-md-8 col-sm-8 col-xs-12"
                                        for="title">{{$choice->choice_content}}
                                 </label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                <div class="col-md-4 col-sm-4 col-xs-12">
                                     <div class="onoffswitch">
                                         <input type="checkbox" name="choice{{$choice->choice_id}}"
                                                class="onoffswitch-checkbox" id="choice{{$choice->choice_id}}">
@@ -57,6 +57,13 @@
                             </div>
                         @empty
                         @endforelse
+                        <input type="hidden" value="<?php echo Auth::user()->id; ?>" name="user_id" />
+                        <div class="ln_solid"></div>
+                        <div class="form-group">
+                            <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                                <button type="submit" class="btn btn-success">Envoyer</button>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
