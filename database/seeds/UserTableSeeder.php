@@ -23,7 +23,10 @@ class UserTableSeeder extends Seeder
         factory(\App\User::class, 1)->create(['username' => 'Alexandre', 'password' => bcrypt('soleil'), 'role' => 'teacher'])->each(function ($user) use ($upload) {
             dl_images($user, $upload, 'small');
         });
-        factory(\App\User::class, 3)->create(['role' => 'first_class'])->each(function ($user) use ($upload) {
+        factory(\App\User::class, 1)->create(['username' => 'Corentin', 'password' => bcrypt('soleil'), 'role' => 'final_class'])->each(function ($user) use ($upload) {
+            dl_images($user, $upload, 'small');
+        });
+        factory(\App\User::class, 2)->create(['role' => 'first_class'])->each(function ($user) use ($upload) {
             dl_images($user, $upload, 'small');
         });
         factory(\App\User::class, 3)->create(['role' => 'final_class'])->each(function ($user) use ($upload) {

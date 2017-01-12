@@ -26,8 +26,9 @@
                           enctype="multipart/form-data">
                         {{method_field('PUT')}}
                         {{csrf_field()}}
+                        <h2>Question</h2>
                         <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="title">Titre <span
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="title">Titre<span
                                         class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
@@ -35,36 +36,39 @@
                                        class="form-control col-md-7 col-xs-12" value="{{$qcm->title}}">
                             </div>
                         </div>
+                        {{--<div class="form-group">--}}
+                            {{--<label class="control-label col-md-3 col-sm-3 col-xs-12">Niveau<span--}}
+                                        {{--class="required">*</span></label>--}}
+                            {{--<div class="col-md-6 col-sm-6 col-xs-12">--}}
+                                {{--<div id="status" class="btn-group" data-toggle="buttons">--}}
+                                    {{--<label class="btn btn-{{check_radio_class($qcm->class_level, 'terminale')}}"--}}
+                                           {{--data-toggle-class="btn-primary"--}}
+                                           {{--data-toggle-passive-class="btn-default">--}}
+                                        {{--<input {{check_radio_edit($qcm->status, 'terminale')}} type="radio"--}}
+                                               {{--name="class_level" value="terminale">--}}
+                                        {{--&nbsp; Terminale &nbsp;--}}
+                                    {{--</label>--}}
+                                    {{--<label class="btn btn-{{check_radio_class($qcm->class_level, 'premiere')}}"--}}
+                                           {{--data-toggle-class="btn-primary"--}}
+                                           {{--data-toggle-passive-class="btn-default">--}}
+                                        {{--<input {{check_radio_edit($qcm->status, 'premiere')}} type="radio"--}}
+                                               {{--name="class_level" value="premiere">--}}
+                                        {{--Premiere--}}
+                                    {{--</label>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
                         <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Niveau</label>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <div id="status" class="btn-group" data-toggle="buttons">
-                                    <label class="btn btn-{{check_radio_class($qcm->class_level, 'terminale')}}"
-                                           data-toggle-class="btn-primary"
-                                           data-toggle-passive-class="btn-default">
-                                        <input {{check_radio_edit($qcm->status, 'terminale')}} type="radio"
-                                               name="class_level" value="terminale">
-                                        &nbsp; Terminale &nbsp;
-                                    </label>
-                                    <label class="btn btn-{{check_radio_class($qcm->class_level, 'premiere')}}"
-                                           data-toggle-class="btn-primary"
-                                           data-toggle-passive-class="btn-default">
-                                        <input {{check_radio_edit($qcm->status, 'premiere')}} type="radio"
-                                               name="class_level" value="premiere">
-                                        Premiere
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Question</label>
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Question<span
+                                        class="required">*</span></label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <textarea name="content" class="resizable_textarea form-control" placeholder=""
                                           style="overflow: hidden; word-wrap: break-word; resize: horizontal; height: 54px;">{{$qcm->content}}</textarea>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Statut</label>
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Statut<span
+                                        class="required">*</span></label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <div id="status" class="btn-group" data-toggle="buttons">
                                     <label class="btn btn-{{check_radio_class($qcm->status, 'published')}}"
@@ -84,24 +88,26 @@
                                 </div>
                             </div>
                         </div>
-                        <?php $i = 0;
-                        if(!empty($choices)){ ?>
+                        <h2>Réponses</h2>
+                        <?php $i = 0; ?>
                         @forelse($choices as $choice)
-                            @if($choice->question_id == $qcm->id)
-                                <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12"
-                                           for="title">Réponse n° <?php $i++; echo $i; ?></label>
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input type="text" id="title" name="title" required="required"
-                                               class="form-control col-md-7 col-xs-12" value="{{$choice->content}}">
-                                    </div>
+                            <?php
+                            if($choice->question_id == $qcm->id ){
+                            $i++; ?>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Reponse n°<?= $i; ?></label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                <textarea name="content<?= $i; ?>" class="resizable_textarea form-control"
+                                          placeholder=""
+                                          style="overflow: hidden; word-wrap: break-word; resize: horizontal; height: 54px;">{{$choice->content}}</textarea>
+                                    <p><?php if ($choice->status == 'yes') echo '<span style="color: #188f38">Vraie</span>'; else echo '<span style="color: #ff1434">Fausse</span>';?></p>
                                 </div>
-                            @endif
+                            </div>
+                            <input type="hidden" value="{{$choice->id}}" name="choiceId<?= $i; ?>"/>
+                            <?php } ?>
                         @empty
-                            aucune réponse
                         @endforelse
-
-                        <?php } ?>
+                        <input type="hidden" value="{{$i}}" name="nbChoice"/>
                         <div class="ln_solid"></div>
                         <div class="form-group">
                             <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">

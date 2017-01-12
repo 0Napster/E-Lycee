@@ -16,8 +16,8 @@
             <a href="{{url('/admin/qcm')}}">
                 <div class="tile-stats">
                     <div class="icon"><i class="fa fa-check-square-o"></i></div>
-                    <div class="count">179</div>
-                    <h3>QCM</h3>
+                    <div class="count">{{$totalQcms}}</div>
+                    <h3>QCMs</h3>
                     <p>Administrer les QCMs</p>
                 </div>
             </a>

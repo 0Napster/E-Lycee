@@ -28,8 +28,10 @@ Route::get('/contact', function () {
     return view('front.contact');
 });
 
-Route::group(['middleware' => ['auth']], function () {
-
+Route::group(['middleware' => ['auth', 'role']], function () {
+    /*
+     * TEACHER
+     * */
     Route::get('admin', 'DashboardController@index');
     /*CRUD Articles*/
     Route::get('admin/post', 'PostController@index');
@@ -45,6 +47,15 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('admin/qcm/{id}/delete', 'QcmController@destroy');
     Route::get('admin/qcm/create', 'QcmController@create');
     Route::any('admin/qcm/store', 'QcmController@store');
+    Route::any('admin/choices/store', 'ChoiceController@store');
+});
+Route::group(['middleware' => ['auth']], function () {
+    /*
+     * STUDENT
+     * */
+    Route::get('student', 'StudDashboardController@index');
+    Route::get('student/qcm', 'QcmController@studQcms');
+    Route::get('student/qcm/{id}/answer', 'StudDashboardController@answer');
 });
 
 Route::any('login', 'Auth\LoginController@login');
