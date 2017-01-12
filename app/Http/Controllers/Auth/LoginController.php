@@ -56,7 +56,11 @@ class LoginController extends Controller
             if (Auth::attempt($credentials)) {
                 // ici on passé avec succès authentification (middleware auth)
                 // et donc on a accès à nos routes protégées
+                if(Auth::user()->role == 'teacher'){
                 return redirect('/admin')->with(['title' => 'Succès', 'message' => 'Authentification reussie !', 'type' => 'success']);
+                }else{
+                    return redirect('/student')->with(['title' => 'Succès', 'message' => 'Authentification reussie !', 'type' => 'success']);
+                }
             } else {
                 return back()
                     ->withInput($request->only('username'))

@@ -1,6 +1,7 @@
 node_modules
 public/storage
-public/assets/images
+public/assets/images/users/*
+public/assets/images/posts/*
 vendor
 .idea
 Homestead.json

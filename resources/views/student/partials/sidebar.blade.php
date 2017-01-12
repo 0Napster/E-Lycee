@@ -1,7 +1,7 @@
 <div class="col-md-3 left_col">
     <div class="left_col scroll-view">
         <div class="navbar nav_title" style="border: 0;">
-            <a href="{{url('/admin')}}" class="site_title"><i class="fa fa-graduation-cap"></i> <span>E-lycée</span></a>
+            <a href="{{url('/student')}}" class="site_title"><i class="fa fa-graduation-cap"></i> <span>E-lycée</span></a>
         </div>
         <div class="profile">
             <div class="profile_pic">
@@ -25,21 +25,11 @@
                 <ul class="nav side-menu" style="">
                     <li class="active"><a><i class="fa fa-home"></i> Général <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu" style="display: block;">
-                            <li><a href="{{url('/admin')}}">Dashboard</a></li>
+                            <li><a href="{{url('/student')}}">Dashboard</a></li>
                             <li><a href="{{url('/')}}">Retour au site</a></li>
                         </ul>
                     </li>
-                    <li><a><i class="fa fa-edit"></i> Articles <span class="fa fa-chevron-down"></span></a>
-                        <ul class="nav child_menu">
-                            <li><a href="{{url('/admin/post')}}">Listes des articles</a></li>
-                            <li><a href="{{url('/admin/post/create')}}">Création d'un article</a></li>
-                        </ul>
-                    </li>
-                    <li><a><i class="fa fa-edit"></i> QCMs <span class="fa fa-chevron-down"></span></a>
-                        <ul class="nav child_menu">
-                            <li><a href="{{url('/admin/qcm')}}">Listes des QCMs</a></li>
-                            <li><a href="{{url('/admin/qcm/create')}}">Création d'un QCM</a></li>
-                        </ul>
+                    <li class="active"><a href="{{url('/student/qcm')}}"><i class="fa fa-edit"></i> QCMs</a>
                     </li>
                 </ul>
             </div>

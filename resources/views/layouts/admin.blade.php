@@ -31,12 +31,14 @@
     if ($('.btn-pre-delete').length != 0) {
         $('.btn-pre-delete').bind('click', function (e) {
             e.preventDefault();
-            let id = $(this).data('postid');
+            let id = $(this).data('id');
+            let type = $(this).data('type');
+            console.log(type);
             $('.btn-delete').bind('click', function (e) {
                 e.preventDefault();
                 e.stopPropagation();
                 $.ajax({
-                    url: '{{url('admin/post')}}/' + id + '/delete',
+                    url: '{{url('admin/')}}/' + type + '/' + id + '/delete',
                     type: 'get',
                     data: {
                         _method: 'delete',
@@ -51,7 +53,7 @@
                         });
                         setInterval(function () {
                             window.location.reload();
-                        }, 1000);
+                        }, 1500);
                     },
                     error: function () {
                         new PNotify({

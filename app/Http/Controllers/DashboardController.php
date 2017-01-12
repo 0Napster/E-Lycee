@@ -20,6 +20,6 @@ class DashboardController extends Controller
         $totalPosts = Post::all()->count();
         $totalQcms = Question::all()->count();
         $title = 'Dashboard';
-        return view('admin.dashboard', compact('totalPosts', 'total', 'title'));
+        return view('admin.dashboard', compact('totalPosts', 'totalQcms', 'total', 'title'));
     }
 }

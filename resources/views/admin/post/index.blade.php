@@ -78,7 +78,7 @@
                                     <a href="{{url('/admin/post/'.$post->id.'/edit')}}" class="btn btn-info btn-xs"><i
                                                 class="fa fa-pencil"></i> Edit </a>
                                     <button type="button" class="btn btn-danger btn-xs btn-pre-delete"
-                                            data-postid="{{$post->id}}"
+                                            data-id="{{$post->id}}"  data-type="post"
                                             data-toggle="modal" data-target=".bs-example-modal-lg"><i
                                                 class="fa fa-trash-o"></i> Delete
                                     </button>

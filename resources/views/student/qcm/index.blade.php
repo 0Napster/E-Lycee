@@ -1,9 +1,9 @@
-@extends('layouts.admin')
+@extends('layouts.student')
 @section('content')
     <div class="page-title">
         <div class="title_left">
-            <h3>Les QCMs
-                <small>Liste des QCMs à administrer</small>
+            <h3>Vos QCMs
+                <small>Liste des QCMs de votre classe</small>
             </h3>
         </div>
 
@@ -25,63 +25,54 @@
                 <div class="x_title">
                     <h2>QCMs</h2>
                     <ul class="nav navbar-right panel_toolbox">
-                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                        </li>
-                        <li><a class="close-link"><i class="fa fa-close"></i></a>
-                        </li>
+                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+                        <li><a class="close-link"><i class="fa fa-close"></i></a></li>
                     </ul>
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
-                    <p>Publié ({{$total['published']}}), Non Publié ({{$total['unpublished']}}) </p>
 
                     <!-- start qcm list -->
                     <table class="table table-striped projects">
                         <thead>
                         <tr>
-                            <th style="width: 1%">#</th>
-                            <th style="width: 20%">Nom du QCM</th>
-                            <th>Niveau</th>
+                            <th>Titre du QCM</th>
+                            <th>Résultat</th>
                             <th>Status</th>
                             <th style="width: 20%">Édition</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @forelse($qcms as $qcm)
+                        @forelse($scores as $score)
+                            <?php $userRole = Auth::user()->role;
+                            ?>
                             <tr>
-                                <td>{{$qcm->id}}</td>
                                 <td>
-                                    <a>{{$qcm->title}}</a>
-                                    <br>
-                                    <small>Créé le : @if(!is_null($qcm->created_at))
-                                            le {{$qcm->created_at->format('d/m/Y')}}
+                                    <a<?php if($score->score_status_question == 'undone') { ?>
+                                            href="{{url('student/qcm/'.$score->score_question_id.'/answer')}}"
+                                    style="text-decoration: underline;"<?php }?>>{{$score->question_title}}</a>
+                                </td>
+                                <td>
+                                    <?php if($score->score_status_question == 'done') { ?>
+                                    <a><?php if ($score->score_note >= 1) echo '<i class="fa fa-check" style="color: #1a8e2e" aria-hidden="true">&nbsp;Réussi</i>'; else echo '<i class="fa fa-times" style="color: #ff1434" aaria-hidden="true">&nbsp;&Eacute;choué</i>'; ?></a>
+                                    <?php } else { ?>
+                                    <a><i class="fa fa-question" style="color: #18308e" aria-hidden="true">&nbsp;À
+                                            faire</i></a>
+                                    <?php }?>
+                                </td>
+                                <td>
+                                    <a><?php if ($score->score_status_question == 'done') echo '<i class="fa fa-check" style="color: #1a8e2e" aria-hidden="true">&nbsp;Fait</i>'; else echo '<i class="fa fa-question" style="color: #18308e" aria-hidden="true">&nbsp;À faire</i>' ?></a>
+                                </td>
+                                <td>
+                                    <small>Créé le : @if(!is_null($score->question_created_at))
+                                            le {{$score->question_created_at}}
                                         @endif
                                     </small>
-                                </td>
-                                <td>
-                                    <a href="#">{{ucfirst($qcm->class_level)}}</a>
-                                </td>
-                                <td>@if (($qcm->status) == "unpublished")
-                                        <button type="button" class="btn btn-warning btn-xs">{{$qcm->status}}</button>
-                                    @else
-                                        <button type="button" class="btn btn-success btn-xs">{{$qcm->status}}</button>
-                                    @endif
-                                </td>
-                                <td>
-                                    <a href="{{url('/qcm/'.$qcm->id)}}" class="btn btn-primary btn-xs"><i
-                                                class="fa fa-folder"></i> View </a>
-                                    <a href="{{url('/admin/qcm/'.$qcm->id.'/edit')}}" class="btn btn-info btn-xs"><i
-                                                class="fa fa-pencil"></i> Edit </a>
-                                    <button type="button" class="btn btn-danger btn-xs btn-pre-delete"
-                                            data-id="{{$qcm->id}}" data-type="qcm"
-                                            data-toggle="modal" data-target=".bs-example-modal-lg"><i
-                                                class="fa fa-trash-o"></i> Delete
-                                    </button>
                                 </td>
                             </tr>
                         @empty
                             <tr>
-                                <td>Il n'y a aucun qcm à administrer.</td>
+                                <td>Il n'y a aucun qcm.</td>
                             </tr>
                         @endforelse
                         </tbody>
