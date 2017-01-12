@@ -46,7 +46,7 @@
                     success: function (data) {
                         new PNotify({
                             title: 'Succès',
-                            text: 'Suppression réussi',
+                            text: 'Suppression réussie',
                             type: 'success',
                             styling: 'bootstrap3'
                         });
