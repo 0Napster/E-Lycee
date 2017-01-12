@@ -20,13 +20,9 @@ Route::get('home', function () {
     return redirect('/');
 });
 
-Route::get('/mentions', function () {
-    return view('front.mentions');
-});
+Route::get('/mentions', 'FrontController@showMentions')->name('mentions');
 
-Route::get('/contact', function () {
-    return view('front.contact');
-});
+Route::get('/contact','FrontController@showContact')->name('contact');
 
 Route::group(['middleware' => ['auth', 'role']], function () {
     /*
@@ -65,7 +61,7 @@ Route::any('logout', 'Auth\LoginController@logout');
 Route::get('/', 'FrontController@index')->name('index');
 Route::get('/article/{id}', 'FrontController@showPost')->name('article');
 Route::get('/search', 'SearchController@getIndex');
-Route::resource('/comment', 'CommentController');
+Route::any('comment/store', 'CommentController@store');
 
 /*MAIL*/
 Route::any('/send', 'EmailController@send');

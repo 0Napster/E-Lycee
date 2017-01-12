@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-<h1>{{ $posts->count() }} correspondant à votre recherche :</h1>
+<h1>{{ $nbResult }} correspondant à votre recherche :</h1>
 
 @forelse($posts as $post)
     <!-- Post -->

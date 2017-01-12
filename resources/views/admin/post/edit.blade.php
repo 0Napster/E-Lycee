@@ -118,11 +118,4 @@
             </div>
         </div>
     </div>
-    <button class="btn btn-default source" onclick="new PNotify({
-                                  title: 'Regular Success',
-                                  text: 'That thing that you were trying to do worked!',
-                                  type: 'success',
-                                  styling: 'bootstrap3'
-                              });">test notify
-    </button>
 @endsection

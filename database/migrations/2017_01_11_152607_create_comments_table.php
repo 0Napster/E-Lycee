@@ -17,7 +17,7 @@ class CreateCommentsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('post_id');
             $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
-            $table->string('title', 100);
+            $table->string('username', 100);
             $table->text('content');
             $table->date('date');
             $table->enum('status', ['unpublished', 'published'])->default('published');

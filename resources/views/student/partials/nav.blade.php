@@ -28,17 +28,27 @@
                     <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown"
                        aria-expanded="false">
                         <i class="fa fa-envelope-o"></i>
+                        <?php if(!empty($qcmWaiting)){ ?>
                         <span class="badge bg-green">{{$qcmWaiting}}</span>
+                        <?php } ?>
                     </a>
                     <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
                         <li>
                             <div class="text">
-                                    <strong><i class="fa fa-warning"></i>&nbsp;Vous avez des nouveaux questionnaires disponibles</strong>
+                                <?php if(!empty($qcmWaiting)){ ?>
+                                <strong><i class="fa fa-warning"></i>&nbsp;Vous avez des nouveaux questionnaires
+                                    disponibles</strong>
+                                <?php }else{ ?>
+                                <strong><i class="fa fa-check"></i>&nbsp;Vous n'avez pas de questionnaire
+                                    disponible</strong>
+                                <?php } ?>
                             </div>
                         </li>
+                        <?php if(!empty($qcmWaiting)){ ?>
                         <li>
                             @forelse($scores as $score)
-                                <a href="{{url('student/qcm/'.$score->score_question_id.'/answer')}}" title="Cliquez pour répondre au questionnaire">
+                                <a href="{{url('student/qcm/'.$score->score_question_id.'/answer')}}"
+                                   title="Cliquez pour répondre au questionnaire">
 
                                 <span class="message">
                                         @if(!empty($score))
@@ -56,6 +66,7 @@
                             @empty
                             @endforelse
                         </li>
+                        <?php } ?>
                     </ul>
                 </li>
             </ul>

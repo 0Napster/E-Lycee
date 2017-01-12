@@ -13,7 +13,6 @@
             <header>
                 <div class="title">
                     <h2><a href="{{url('article',[$post->id])}}">{{$post->title}}</a></h2>
-                    <p>Lorem ipsum dolor amet nullam consequat etiam feugiat</p>
                 </div>
                 <div class="meta">
                     @if(!is_null($post->date))
@@ -49,7 +48,7 @@
             @endif
             @forelse($post->comments as $comment)
                 <div class="single-comment">
-                    <h4>{{$comment->title}}
+                    <h4>{{$comment->username}}
                         <span>le</span>
                         @if($comment->date)
                             {{$comment->date->format('d/m/Y')}}
@@ -64,18 +63,21 @@
             @endforelse
             <div class="form-comment">
                 <h3>Ajouter un commentaire</h3>
-                <form action="{{url('/comment')}}" method="POST" class="col-md-6">
+                <form action="{{url('comment/store')}}" method="POST" class="col-md-6">
+                    {{method_field('POST')}}
                     {{csrf_field()}}
                     <div class="form-group">
                         @if (Auth::check())
-                            <input type="text" name="title" id="nom" placeholder="Pseudo" class="form-control" value="{{ Auth::user()->username }}" />
+                            <input type="text" name="username" id="username" placeholder="Pseudo*" class="form-control"
+                                   value="{{ Auth::user()->username }}" required/>
                         @else
-                        <input type="text" name="title" id="nom" placeholder="Pseudo" class="form-control" value="{{old('title')}}" />
+                            <input type="text" name="username" id="username" placeholder="Pseudo*" class="form-control"
+                                   value="{{old('username')}}" required/>
                         @endif
                     </div>
                     <div class="form-group">
-                        <textarea id="message" name="content" placeholder="Votre message"
-                                  class="form-control" value="{{old('content')}}" ></textarea>
+                        <textarea id="message" name="content" placeholder="Votre message*"
+                                  class="form-control" required>{{old('content')}}</textarea>
                     </div>
                     <input type="hidden" name="date" value="{{date('Y-m-d H:i:s')}}">
                     <input type="hidden" name="post_id" value="{{$post->id}}">

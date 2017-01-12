@@ -15,7 +15,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
     $rand = rand(0, 2);
 
     return [
-        'username' => $faker->name,
+        'username' => $faker->firstName,
         'password' => $password = bcrypt('soleil'),
         'remember_token' => str_random(10),
         'role' => $roleTable[$rand]
@@ -43,8 +43,8 @@ $factory->define(\App\Post::class, function (Faker\Generator $faker) {
 $factory->define(App\Comment::class, function (Faker\Generator $faker) {
     $id = rand(1,4);
     return [
-        'title' => $faker->sentence($nbWords = 1, $variableNbWords = true),
-        'content' => $faker->paragraph(1),
+        'username' => $faker->firstName,
+        'content' => $faker->text(255),
         'post_id' => $id,
         'date' => $faker->dateTime($max = 'now'),
     ];

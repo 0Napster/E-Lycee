@@ -24,7 +24,7 @@ class StoreComment extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|max:255',
+            'username' => 'required|max:100',
             'content' => 'required|max:255',
         ];
     }

@@ -9,6 +9,7 @@ class SearchController extends Controller
 {
     public function getIndex(Request $request)
     {
+        $postsMostCommenteds = Post::withCount('comments')->orderBy('comments_count', 'DESC')->take(4)->get();
         $this->validate($request, [
             'search' => 'required'
         ]);
@@ -19,7 +20,8 @@ class SearchController extends Controller
             ->orWhere('content', 'like', "%$search%")
             ->paginate(2)
             ->appends(['search' => $search]);
+        $nbResult = $posts->count();
 
-        return view('front.search', compact('posts'));
+        return view('front.search', compact('posts', 'postsMostCommenteds', 'nbResult'));
     }
 }

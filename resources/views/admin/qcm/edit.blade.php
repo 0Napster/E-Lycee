@@ -36,28 +36,6 @@
                                        class="form-control col-md-7 col-xs-12" value="{{$qcm->title}}">
                             </div>
                         </div>
-                        {{--<div class="form-group">--}}
-                            {{--<label class="control-label col-md-3 col-sm-3 col-xs-12">Niveau<span--}}
-                                        {{--class="required">*</span></label>--}}
-                            {{--<div class="col-md-6 col-sm-6 col-xs-12">--}}
-                                {{--<div id="status" class="btn-group" data-toggle="buttons">--}}
-                                    {{--<label class="btn btn-{{check_radio_class($qcm->class_level, 'terminale')}}"--}}
-                                           {{--data-toggle-class="btn-primary"--}}
-                                           {{--data-toggle-passive-class="btn-default">--}}
-                                        {{--<input {{check_radio_edit($qcm->status, 'terminale')}} type="radio"--}}
-                                               {{--name="class_level" value="terminale">--}}
-                                        {{--&nbsp; Terminale &nbsp;--}}
-                                    {{--</label>--}}
-                                    {{--<label class="btn btn-{{check_radio_class($qcm->class_level, 'premiere')}}"--}}
-                                           {{--data-toggle-class="btn-primary"--}}
-                                           {{--data-toggle-passive-class="btn-default">--}}
-                                        {{--<input {{check_radio_edit($qcm->status, 'premiere')}} type="radio"--}}
-                                               {{--name="class_level" value="premiere">--}}
-                                        {{--Premiere--}}
-                                    {{--</label>--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Question<span
                                         class="required">*</span></label>
@@ -119,11 +97,4 @@
             </div>
         </div>
     </div>
-    <button class="btn btn-default source" onclick="new PNotify({
-                                  title: 'Regular Success',
-                                  text: 'That thing that you were trying to do worked!',
-                                  type: 'success',
-                                  styling: 'bootstrap3'
-                              });">test notify
-    </button>
 @endsection

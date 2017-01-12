@@ -19,10 +19,29 @@ class StudDashboardController extends Controller
     public function index()
     {
         $userId = Auth::user()->id;
+        $userRole = Auth::user()->role;
+        if ($userRole == 'final_class') $userLevel = 'terminale'; else $userLevel = 'premiere';
+        $scores = DB::table('scores')
+            ->join('questions', 'scores.question_id', '=', 'questions.id')
+            ->select(DB::raw('scores.user_id as score_user_id,
+              scores.question_id as score_question_id,
+              scores.status_question as score_status_question,
+              scores.note as score_note,
+              scores.updated_at as score_updated_at,
+              questions.title as question_title,
+              questions.status as question_status,
+              questions.updated_at as question_updated_at,
+              questions.class_level as question_class_level'))
+            ->where('scores.user_id', '=', $userId)
+            ->where('questions.class_level', '=', $userLevel)
+            ->where('questions.status', '=', 'published')
+            ->get();
+        $qcmWaiting = $scores->where('score_status_question', '=', 'undone')->count();
+
+
         $totalQcms = Question::all()->count();
-        $scores = Score::all();
         $title = 'Dashboard';
-        return view('student.dashboard', compact('title', 'scores'));
+        return view('student.dashboard', compact('title', 'scores' , 'qcmWaiting'));
     }
 
     /**

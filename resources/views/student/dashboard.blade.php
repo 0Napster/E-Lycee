@@ -10,11 +10,11 @@
             $potentialCount = 0;
             $userId = Auth::user()->id;
             foreach ($scores as $score) {
-                if ($score->user_id == $userId ) {
-                    if($score->status_question == 'done'){
+                if ($score->score_user_id == $userId ) {
+                    if($score->score_status_question == 'done'){
                         $maxPointsCount++;
                         $potentialCount++;
-                        $pointsCount += $score->note;
+                        $pointsCount += $score->score_note;
                     }else{
                         $potentialCount++;
                     }

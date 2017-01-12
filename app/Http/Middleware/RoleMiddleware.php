@@ -16,8 +16,8 @@ class RoleMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if (!Auth::user()->isAdmin()) {
-            return redirect('/home')->with(['title' => 'Interdit', 'message' => 'Vous n\'avez pas les droits pour accéder à cet espace!', 'type' => 'warning']);;
+        if (!Auth::user()->isAdmin() && Auth::user()->isStudent()) {
+            return redirect('/student')->with(['title' => 'Interdit', 'message' => 'Vous n\'avez pas les droits pour accéder à cet espace!', 'type' => 'warning']);;
         }
 
         return $next($request);
