@@ -28,28 +28,33 @@
                     <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown"
                        aria-expanded="false">
                         <i class="fa fa-envelope-o"></i>
-                        <span class="badge bg-green">6</span>
+                        <span class="badge bg-green">{{$qcmWaiting}}</span>
                     </a>
                     <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
                         <li>
-                            <a>
-                                <span class="image"><img src="" alt="Profile Image"></span>
-                                <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                                <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                            </a>
+                            <div class="text">
+                                    <strong><i class="fa fa-warning"></i>&nbsp;Vous avez des nouveaux questionnaires disponibles</strong>
+                            </div>
                         </li>
                         <li>
-                            <div class="text-center">
-                                <a>
-                                    <strong>See All Alerts</strong>
-                                    <i class="fa fa-angle-right"></i>
+                            @forelse($scores as $score)
+                                <a href="{{url('student/qcm/'.$score->score_question_id.'/answer')}}" title="Cliquez pour répondre au questionnaire">
+
+                                <span class="message">
+                                        @if(!empty($score))
+                                        @if($score->score_status_question == 'undone')
+                                            <i class="fa fa-edit"></i>&nbsp;
+                                            "{{$score->question_title}}" est
+                                            <?php $date = new DateTime($score->question_updated_at); ?>
+                                            disponible depuis le <span><?php echo $date->format('d/m/Y'); ?>
+                                                à <?php echo $date->format('H:i'); ?></span>
+                                        @else
+                                        @endif
+                                    @endif
+                                </span>
                                 </a>
-                            </div>
+                            @empty
+                            @endforelse
                         </li>
                     </ul>
                 </li>

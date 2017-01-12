@@ -68,8 +68,6 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <a href="{{url('/qcm/'.$qcm->id)}}" class="btn btn-primary btn-xs"><i
-                                                class="fa fa-folder"></i> View </a>
                                     <a href="{{url('/admin/qcm/'.$qcm->id.'/edit')}}" class="btn btn-info btn-xs"><i
                                                 class="fa fa-pencil"></i> Edit </a>
                                     <button type="button" class="btn btn-danger btn-xs btn-pre-delete"
