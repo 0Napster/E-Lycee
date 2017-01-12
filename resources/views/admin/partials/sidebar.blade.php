@@ -45,33 +45,4 @@
             </div>
         </div>
     </div>
-    <div class="sidebar-footer hidden-small">
-        <a data-toggle="tooltip" data-placement="top" title="" data-original-title="Settings">
-            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-        </a>
-        <a data-toggle="tooltip" data-placement="top" title="" data-original-title="FullScreen">
-            <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
-        </a>
-        <a data-toggle="tooltip" data-placement="top" title="" data-original-title="Lock">
-            <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
-        </a>
-        <a data-toggle="tooltip" data-placement="top" title="" data-original-title="Logout">
-            <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
-        </a>
-    </div>
 </div>
-{{--<ul>--}}
-{{--<li>--}}
-{{--<span style="color:#fff;margin-left:20px;" >--}}
-{{--<i class="fa fa-user fa-5x" aria-hidden="true"></i><br>--}}
-{{--<span class="text-center" style="margin-left:40px;">{{(\Auth::user() ? \Auth::user()->name : '')}}</span>--}}
-{{--</span>--}}
-{{--</li>--}}
-{{--<li  class="{{ (\Request::route()->getName() == 'post.index') ? 'active' : '' }}">--}}
-{{--<a href="/post" >Dashboard</a>--}}
-{{--</li>--}}
-{{--<li class="{{ (\Request::route()->getName() == 'post.create') ? 'active' : '' }}">--}}
-{{--<a href="{{url('/post/create')}}">Ajouter un article</a>--}}
-{{--</li>--}}
-{{--</ul>--}}
-

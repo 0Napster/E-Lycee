@@ -15,7 +15,7 @@
 			<li><a class="fa-sign-in" href="{{url('/login')}}" title="Se connecter">Se connecter</a></li>
 			<li class="search">
 				<a class="fa-search" href="#search" title="Recherche d'articles">Recherche d'articles</a>
-				<form id="search" method="get" action="/search">
+				<form id="search" method="get" action="{{url('/search')}}">
 					<input type="text" name="search" placeholder="Recherche d'articles" />
 				</form>
 			</li>
@@ -31,7 +31,7 @@
 
 	<!-- Search -->
 	<section>
-		<form class="search" action="/search" method="GET">
+		<form class="search" action="{{url('/search')}}" method="GET">
 			<input type="text" name="search" placeholder="Recherche d'articles" />
 			<button type="submit">Rechercher</button>
 		</form>

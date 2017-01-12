@@ -14,47 +14,24 @@
     <section>
         <h2>À lire aussi :</h2>
         <div class="mini-posts">
-
+        @forelse($postsMostCommenteds as $postsMostCommented)
             <!-- Mini Post -->
             <article class="mini-post">
                 <header>
-                    <h3><a href="#">Vitae sed condimentum</a></h3>
-                    <time class="published" datetime="2015-10-20">October 20, 2015</time>
-                    <a href="#" class="author"><img src="images/avatar.jpg" alt="" /></a>
+                    <h3><a href="/article/{{$postsMostCommented->id}}">{{$postsMostCommented->title}}</a></h3>
+                    @if(!is_null($postsMostCommented->date))
+                    <time class="published" datetime="{{$postsMostCommented->date}}">{{$postsMostCommented->date}}</time>
+                        @else
+                    <time class="published" datetime="{{$postsMostCommented->created_at->format('d/m/Y')}}">{{$postsMostCommented->created_at->format('d/m/Y')}}</time>
+                    @endif
+                    <a href="#" class="author"><img src="/assets/images/users/{{$post->user->url_thumbnail}}" alt="" /></a>
                 </header>
-                <a href="#" class="image"><img src="images/pic04.jpg" alt="" /></a>
+                @if(!is_null($postsMostCommented->url_thumbnail))
+                <a href="/article/{{$postsMostCommented->id}}" class="image"><img src="/assets/images/posts/{{$postsMostCommented->url_thumbnail}}" alt="" /></a>
+                @endif
             </article>
-
-            <!-- Mini Post -->
-            <article class="mini-post">
-                <header>
-                    <h3><a href="#">Rutrum neque accumsan</a></h3>
-                    <time class="published" datetime="2015-10-19">October 19, 2015</time>
-                    <a href="#" class="author"><img src="images/avatar.jpg" alt="" /></a>
-                </header>
-                <a href="#" class="image"><img src="images/pic05.jpg" alt="" /></a>
-            </article>
-
-            <!-- Mini Post -->
-            <article class="mini-post">
-                <header>
-                    <h3><a href="#">Odio congue mattis</a></h3>
-                    <time class="published" datetime="2015-10-18">October 18, 2015</time>
-                    <a href="#" class="author"><img src="images/avatar.jpg" alt="" /></a>
-                </header>
-                <a href="#" class="image"><img src="images/pic06.jpg" alt="" /></a>
-            </article>
-
-            <!-- Mini Post -->
-            <article class="mini-post">
-                <header>
-                    <h3><a href="#">Enim nisl veroeros</a></h3>
-                    <time class="published" datetime="2015-10-17">October 17, 2015</time>
-                    <a href="#" class="author"><img src="images/avatar.jpg" alt="" /></a>
-                </header>
-                <a href="#" class="image"><img src="images/pic07.jpg" alt="" /></a>
-            </article>
-
+            @empty
+        @endforelse
         </div>
     </section>
 

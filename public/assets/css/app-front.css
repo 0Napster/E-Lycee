@@ -4026,6 +4026,18 @@ dl {
     .post > a.image.featured:hover img {
       -webkit-transform: scale(1.05);
       transform: scale(1.05); }
+  .post .single-comment h4 {
+    padding-top: 3em;
+    margin-top: 3em;
+    border-top: 1px darkgrey dashed; }
+  .post .txt-comment {
+    background: rgba(160, 160, 160, 0.075);
+    border: none;
+    border: 1px solid rgba(160, 160, 160, 0.3); }
+    .post .txt-comment p {
+      margin: 0.5em; }
+  .post .form-comment {
+    padding-top: 2em; }
   .post > footer {
     display: -moz-flex;
     display: -ms-flex;

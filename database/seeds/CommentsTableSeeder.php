@@ -14,5 +14,6 @@ class CommentsTableSeeder extends Seeder
         for ($i = 1; $i < 16; $i++) {
             factory(App\Comment::class, 1)->create(['post_id' => $i]);
         }
+        factory(App\Comment::class, 6)->create();
     }
 }

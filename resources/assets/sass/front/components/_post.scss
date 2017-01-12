@@ -72,6 +72,24 @@
 				}
 			}
 		}
+		.single-comment {
+			h4 {
+				padding-top: 3em;
+				margin-top: 3em;
+				border-top: 1px darkgrey dashed;
+			}
+		}
+		.txt-comment {
+			background: rgba(160,160,160,.075);
+			border: none;
+			border: 1px solid rgba(160,160,160,.3);
+			p {
+				margin: 0.5em;
+			}
+		}
+		.form-comment {
+			padding-top: 2em;
+		}
 
 		> footer {
 			@include vendor('display', 'flex');

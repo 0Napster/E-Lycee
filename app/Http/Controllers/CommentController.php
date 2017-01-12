@@ -18,6 +18,7 @@ class CommentController extends Controller
     public function store(StoreComment $request)
     {
         Comment::create($request->all());
-        return back()->with('messageFront', 'Votre commentaire a bien été enregistré !');
+        $post_id = $request->input('post_id');
+        return redirect('article/' . $post_id)->with('messageFront', 'Votre commentaire a bien été enregistré !');
     }
 }

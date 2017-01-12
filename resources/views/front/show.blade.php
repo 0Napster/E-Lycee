@@ -64,10 +64,14 @@
             @endforelse
             <div class="form-comment">
                 <h3>Ajouter un commentaire</h3>
-                <form action="{{url('comment')}}" method="POST" class="col-md-6">
+                <form action="{{url('/comment')}}" method="POST" class="col-md-6">
                     {{csrf_field()}}
                     <div class="form-group">
+                        @if (Auth::check())
+                            <input type="text" name="title" id="nom" placeholder="Pseudo" class="form-control" value="{{ Auth::user()->username }}" />
+                        @else
                         <input type="text" name="title" id="nom" placeholder="Pseudo" class="form-control" value="{{old('title')}}" />
+                        @endif
                     </div>
                     <div class="form-group">
                         <textarea id="message" name="content" placeholder="Votre message"

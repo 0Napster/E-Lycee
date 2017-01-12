@@ -41,7 +41,7 @@ $factory->define(\App\Post::class, function (Faker\Generator $faker) {
 });
 
 $factory->define(App\Comment::class, function (Faker\Generator $faker) {
-    $id = rand(1,9);
+    $id = rand(1,4);
     return [
         'title' => $faker->sentence($nbWords = 1, $variableNbWords = true),
         'content' => $faker->paragraph(1),
