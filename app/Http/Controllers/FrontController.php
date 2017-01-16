@@ -9,7 +9,8 @@ class FrontController extends Controller
 {
     public function index()
     {
-        $posts = Post::paginate(5);
+        $posts = Post::where('status', '=', 'published')->paginate(5);
+
         $postsMostCommenteds = Post::withCount('comments')->orderBy('comments_count', 'DESC')->take(5)->get();
 
         return view('front.index', compact('posts', 'postsMostCommenteds'));
